@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2022-09-08 Thu 15:30 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>"Wiki" Data Model</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<style> body {font: 16px/1.385 arial,helvetica,clean,sans-serif;} </style>
+</head>
+<body>
+<article id="content" class="content">
+<header>
+<h1 class="title">&ldquo;Wiki&rdquo; Data Model</h1>
+</header><p>
+Description of content types and taxonomies for the Giving Tuesday &ldquo;Wiki&rdquo; project
+</p>
+
+
+<section id="outline-container-org6b9e829" class="outline-2">
+<h2 id="org6b9e829">Introduction</h2>
+<div class="outline-text-2" id="text-org6b9e829">
+<p>
+This document describes the data model for the &ldquo;wiki&rdquo;. As we identify short- and long-term goals for the project, this model should help to make our requirements clear. 
+</p>
+
+<p>
+The proposed wiki is envisioned here as a tool primarily intended for the use of <a href="#org44a3d0b">Giving Tuesday Campaign Leaders</a>, but it also serves as a data store for internal use by GT staff.  
+</p>
+
+<p>
+The rest of this doument describes the five &ldquo;Content Types&rdquo; of the wiki: Movements, Campaigns, Activities, Leaders, and Organizations. These constitute a working &ldquo;ontology&rdquo; &#x2013; a description of the kinds of things that exist &#x2013; for our network. As our understanding of our network deepends, this ontology may also change.
+</p>
+
+<p>
+A final tab describes our &ldquo;Taxonomies&rdquo; &#x2013; the categories we use to classify individual entries in the Wiki.  These taxonomies are in flux, and may of the individual terms have yet to be determined.  
+</p>
+</div>
+</section>
+
+<section id="outline-container-org3cac65e" class="outline-2">
+<h2 id="org3cac65e">Movements</h2>
+<div class="outline-text-2" id="text-org3cac65e">
+<p>
+A &ldquo;Movement&rdquo; is our top-level category for Ggiving Tuesday activist groups.  A Movement is usually located in a specific place &#x2013; a country, a province or state, or even a city &#x2013; and persists over time, from year to year. Movements run <a href="#org7323b68">Campaigns</a>, and usually have <a href="#org44a3d0b">Leaders</a> associated with them.  Often they are sponsored by <a href="#org7c71ba6">Organizations</a>, but not always.  
+</p>
+
+<p>
+Giving Tuesday collects many types of data about Movements, but most are not visible on the Wiki. Here we track the following fields:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Req&rsquo;d</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Title</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Name of the Movement</td>
+</tr>
+
+<tr>
+<td class="org-left">Description</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">The Movement&rsquo;s self-description, hopefully provided by them</td>
+</tr>
+
+<tr>
+<td class="org-left">Scale</td>
+<td class="org-left">Taxonomy</td>
+<td class="org-left">Y</td>
+<td class="org-left">Geographical scale: Global, Regional, National, Local, Network</td>
+</tr>
+
+<tr>
+<td class="org-left">Focus</td>
+<td class="org-left">Taxonomy</td>
+<td class="org-left">N</td>
+<td class="org-left">Thematic focus of movement, if any.  This taonomy needs restructuring</td>
+</tr>
+
+<tr>
+<td class="org-left">Hashtag</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Hashtag associated with the movement</td>
+</tr>
+
+<tr>
+<td class="org-left">Active/Inactive</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">Y</td>
+<td class="org-left">Whether or not the movement is currently active</td>
+</tr>
+
+<tr>
+<td class="org-left">Logo</td>
+<td class="org-left">Image</td>
+<td class="org-left">Y</td>
+<td class="org-left">Logo associated with the movement, if any</td>
+</tr>
+
+<tr>
+<td class="org-left">Location</td>
+<td class="org-left">Geotag</td>
+<td class="org-left">N</td>
+<td class="org-left">Location, if any; use gazeteer service to parse location and provide geographical data (e.g. GeoJSON)</td>
+</tr>
+
+<tr>
+<td class="org-left">Website</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">URL for movement</td>
+</tr>
+
+<tr>
+<td class="org-left">Facebook</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">URL of Facebook Page</td>
+</tr>
+
+<tr>
+<td class="org-left">Instagram</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Instagram user</td>
+</tr>
+
+<tr>
+<td class="org-left">Twitter</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Twitter User</td>
+</tr>
+
+<tr>
+<td class="org-left">Tiktok?</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Is Tiktok ID important? Stored?</td>
+</tr>
+
+<tr>
+<td class="org-left">Organization</td>
+<td class="org-left">Relationship (2-way 1-to-1)</td>
+<td class="org-left">No</td>
+<td class="org-left">ID of Sponsoring Organization</td>
+</tr>
+
+<tr>
+<td class="org-left">Leaders</td>
+<td class="org-left">Relationship (2-way 1-to-many)</td>
+<td class="org-left">No</td>
+<td class="org-left">ID&rsquo;s of associated Leaders</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+We also <b>link to</b> information about the lead <a href="#org7c71ba6">Organization</a>, known <a href="#org297b3db">Activities</a>, and current <a href="#org44a3d0b">Leaders</a> associated wit this movement.
+</p>
+
+<p>
+Movements may also include attachments, such as PDF&rsquo;s or Word documents. The main purpose of any such attachments is to help leaders of other movements organize their efforts. 
+</p>
+</div>
+</section>
+
+<section id="outline-container-org7323b68" class="outline-2">
+<h2 id="org7323b68">Campaigns</h2>
+<div class="outline-text-2" id="text-org7323b68">
+<p>
+While the word &ldquo;campaign&rdquo; has a number of meanings throughout GT, in the Wiki we use this word to mean an organized, sustained drive, usually taking place over a period of weeks or months, always associated with a <a href="#org3cac65e">Movement</a>, and generally consisting of a number of <a href="#org297b3db">Activities</a>. In the Wiki, we track the following information about Campaigns:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Req&rsquo;d</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Title</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Name of the Campaign</td>
+</tr>
+
+<tr>
+<td class="org-left">Description</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">The Campaign&rsquo;s self-description, hopefully provided by them</td>
+</tr>
+
+<tr>
+<td class="org-left">Start</td>
+<td class="org-left">Date</td>
+<td class="org-left">N</td>
+<td class="org-left">Approximate Start Date of Campaign</td>
+</tr>
+
+<tr>
+<td class="org-left">End</td>
+<td class="org-left">Date</td>
+<td class="org-left">N</td>
+<td class="org-left">Approximate End Date of Campaign</td>
+</tr>
+
+<tr>
+<td class="org-left">Location</td>
+<td class="org-left">Geotag</td>
+<td class="org-left">N</td>
+<td class="org-left">Location, if any; use gazeteer service to parse location and provide geographical data (e.g. GeoJSON)</td>
+</tr>
+
+<tr>
+<td class="org-left">Hashtag</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">Hashtag for the specific campaign (especially if distinct from the hashtag of the campaign&rsquo;s <a href="#org3cac65e">Movement</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+<section id="outline-container-org297b3db" class="outline-2">
+<h2 id="org297b3db">Activities</h2>
+<div class="outline-text-2" id="text-org297b3db">
+<p>
+In the Wiki, an Activity is a well-definied, time-limited action undertaken by a campaign. Very focussed campaigns will often only have one Activity, but large campaigns may have many.  For Activities, we track the folowing information:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Req&rsquo;d</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Title</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Name of the Activity</td>
+</tr>
+
+<tr>
+<td class="org-left">Description</td>
+<td class="org-left">Text</td>
+<td class="org-left">Y</td>
+<td class="org-left">The Activity&rsquo;s self-description, hopefully provided by them</td>
+</tr>
+
+<tr>
+<td class="org-left">Start</td>
+<td class="org-left">Date</td>
+<td class="org-left">N</td>
+<td class="org-left">Approximate Start Date of Activity</td>
+</tr>
+
+<tr>
+<td class="org-left">End</td>
+<td class="org-left">Date</td>
+<td class="org-left">N</td>
+<td class="org-left">Approximate End Date of Activity</td>
+</tr>
+
+<tr>
+<td class="org-left">Hashtag</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">Hashtag for the specific activity (especially if distinct from the hashtag of the activity&rsquo;s <a href="#org7323b68">Campaign</a> or <a href="#org3cac65e">Movement</a></td>
+</tr>
+
+<tr>
+<td class="org-left">Activity Type</td>
+<td class="org-left">Taxonomy</td>
+<td class="org-left">N</td>
+<td class="org-left">Taxonomy terms as yet undetermeined <span class="timestamp-wrapper"><span class="timestamp">2022-09-08 Thu</span></span></td>
+</tr>
+
+<tr>
+<td class="org-left">Location</td>
+<td class="org-left">Geotag</td>
+<td class="org-left">N</td>
+<td class="org-left">Location, if any; use gazeteer service to parse location and provide geographical data (e.g. GeoJSON)</td>
+</tr>
+
+<tr>
+<td class="org-left">post-mortem</td>
+<td class="org-left">Text</td>
+<td class="org-left">N</td>
+<td class="org-left">Possible self-evaluation of the activity, with suggestions for improvements</td>
+</tr>
+
+<tr>
+<td class="org-left">Complete/Incomplete</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">N</td>
+<td class="org-left">Might be a paain to update this. Leave out?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+<section id="outline-container-org7c71ba6" class="outline-2">
+<h2 id="org7c71ba6"><span class="todo ACTION">ACTION</span> Organizations</h2>
+<div class="outline-text-2" id="text-org7c71ba6">
+<p>
+In the Wiki, an Organization is a formal or informal entity that helps to organize one or more <a href="#org3cac65e">Movements</a>,  <a href="#org7323b68">Campaigns</a>, or <a href="#org297b3db">Activities</a>. Some Organizations have only brief or fleeting contact with Giving Tuesday, while others have a deep ongoing relationship. 
+</p>
+
+<p>
+Question: Exactly what information about Organizations should the <b>wiki</b> display? Will depend a bit on what we expect this tool to do.  
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Req&rsquo;d</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Title</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Name of the Organization</td>
+</tr>
+
+<tr>
+<td class="org-left">Description</td>
+<td class="org-left">Text</td>
+<td class="org-left">Y</td>
+<td class="org-left">The Organizatin&rsquo;s self-description, preferably including their commitment to generosity</td>
+</tr>
+
+<tr>
+<td class="org-left">Organization Type</td>
+<td class="org-left">Taxonomy</td>
+<td class="org-left">N</td>
+<td class="org-left">Type of organization. Terms TBD</td>
+</tr>
+
+<tr>
+<td class="org-left">Location</td>
+<td class="org-left">Geotag</td>
+<td class="org-left">N</td>
+<td class="org-left">Location, if any; use gazeteer service to parse location and provide geographical data (e.g. GeoJSON)</td>
+</tr>
+
+<tr>
+<td class="org-left">Logo</td>
+<td class="org-left">Image</td>
+<td class="org-left">N</td>
+<td class="org-left">Logo</td>
+</tr>
+
+<tr>
+<td class="org-left">Active/Inactive</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">N</td>
+<td class="org-left">Is this org actively engaged with GT?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="outline-container-org44a3d0b" class="outline-2">
+<h2 id="org44a3d0b">Leaders</h2>
+<div class="outline-text-2" id="text-org44a3d0b">
+<p>
+Leaders are the heart of the GT network, and the primary users of the Wiki.  Leaders are individuals who have taken responsibility for a particular Movement, Campaign, or Activity. GT works with many leaders, and we Have a  somewhat elaborate classifications system for them.  
+</p>
+
+<p>
+One of the main reasons the Wiki exists is to allow leaders to discover each other more easily, so this content type is in some ways the backbone of the Wiki. 
+</p>
+
+<p>
+For Leaders we track the following information:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Req&rsquo;d</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Title</td>
+<td class="org-left">String</td>
+<td class="org-left">Y</td>
+<td class="org-left">Name of the Leader</td>
+</tr>
+
+<tr>
+<td class="org-left">Description</td>
+<td class="org-left">Text</td>
+<td class="org-left">Y</td>
+<td class="org-left">The Leader&rsquo;s self-description, hopefully provided by them</td>
+</tr>
+
+<tr>
+<td class="org-left">Interests</td>
+<td class="org-left">Taxonomy</td>
+<td class="org-left">N</td>
+<td class="org-left">Where do we get this? Should this taxonomy be shared with Movement/Campaign themes?</td>
+</tr>
+
+<tr>
+<td class="org-left">Active/Inactive</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Is this person still working with GT?</td>
+</tr>
+
+<tr>
+<td class="org-left">Profile Picture</td>
+<td class="org-left">Image</td>
+<td class="org-left">N</td>
+<td class="org-left">Self-selected profile picture</td>
+</tr>
+
+<tr>
+<td class="org-left">Contact Information</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">What ought we to provied here?</td>
+</tr>
+
+<tr>
+<td class="org-left">Website</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">URL for leader&rsquo;s personal site</td>
+</tr>
+
+<tr>
+<td class="org-left">Facebook</td>
+<td class="org-left">String</td>
+<td class="org-left">N</td>
+<td class="org-left">URL of Facebook Page</td>
+</tr>
+
+<tr>
+<td class="org-left">Instagram</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Instagram user</td>
+</tr>
+
+<tr>
+<td class="org-left">Twitter</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Twitter User</td>
+</tr>
+
+<tr>
+<td class="org-left">Tiktok?</td>
+<td class="org-left">String</td>
+<td class="org-left">No</td>
+<td class="org-left">Is Tiktok ID important? Stored?</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note: We track other demographic data about leaders in a private DB, and GT staff should use the private DB to record this information. The Knowledge Base gives leaders an opportunity to describe and promote themselves within the community of leaders; GT can export this information to use in internal analyses. 
+</p>
+</div>
+</section>
+
+<section id="outline-container-org841a3fb" class="outline-2">
+<h2 id="org841a3fb">Taxonomies</h2>
+<div class="outline-text-2" id="text-org841a3fb">
+<p>
+We use several taxonomies to understand our network. These may shift as we come to understand the network better.  Each is listed below in a subheading. At present, <b>none</b> of these has an adequate list of terms. 
+</p>
+</div>
+
+<div id="outline-container-org3561041" class="outline-3">
+<h3 id="org3561041">Activity Types</h3>
+<div class="outline-text-3" id="text-org3561041">
+<p>
+This taxonomy applies only to Activities.  We hope that it inspires leaders to create innovative and creative iterations on known activity types. 
+</p>
+
+<p>
+(I need help on this one!)
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">flashmob</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge50e490" class="outline-3">
+<h3 id="orge50e490">Organization Types</h3>
+<div class="outline-text-3" id="text-orge50e490">
+<p>
+Historically, GT has classified organizations in various ways. These existing classifications need to be disentangled and normalized. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc5a8ffb" class="outline-3">
+<h3 id="orgc5a8ffb">Leader Interests</h3>
+<div class="outline-text-3" id="text-orgc5a8ffb">
+<p>
+This needs some work. A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#orge59189c">Movement Focus</a>.
+</p>
+
+<p>
+At present, the taxonomy terms have not been defined.  
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3075fbf" class="outline-3">
+<h3 id="org3075fbf">Movement Scale</h3>
+<div class="outline-text-3" id="text-org3075fbf">
+<p>
+A simple schema to quickly identify the geographical scale on which the movement operates.
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Term</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Global</td>
+<td class="org-left">Our global movement</td>
+</tr>
+
+<tr>
+<td class="org-left">Regional</td>
+<td class="org-left">A supra-national regional movement (e.g., North Maerican, Latin American, European, etc.)</td>
+</tr>
+
+<tr>
+<td class="org-left">National</td>
+<td class="org-left">A national-level movement</td>
+</tr>
+
+<tr>
+<td class="org-left">Local</td>
+<td class="org-left">A campaign operating at the scale of a State/Province, City, County, Parish, or other sub-national scale</td>
+</tr>
+
+<tr>
+<td class="org-left">Network</td>
+<td class="org-left">A non-geographical movement, usually united by some common interest rathre than geography</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge59189c" class="outline-3">
+<h3 id="orge59189c">Movement Focus</h3>
+<div class="outline-text-3" id="text-orge59189c">
+<p>
+This needs some work. A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#orgc5a8ffb">Leader Interests</a>.
+</p>
+
+<p>
+At present, the taxonomy terms have not been defined.  
+</p>
+</div>
+</div>
+</section>
+</article>
+<section id="postamble" class="status">
+<p class="date">Created: 2022-09-08 Thu 15:30</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</section>
+<script>window.klipse_settings = {selector_eval_html: '.src-html',
+                             selector_eval_js: '.src-js',
+                             selector_eval_python_client: '.src-python',
+                             selector_eval_scheme: '.src-scheme',
+                             selector: '.src-clojure',
+                             selector_eval_ruby: '.src-ruby'};</script><script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script><link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"/></body>
+</html>
