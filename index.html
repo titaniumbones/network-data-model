@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2022-09-30 Fri 13:15 -->
+<!-- 2022-09-30 Fri 13:27 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Giving Tuesday Network Data Model</title>
@@ -27,15 +27,20 @@
 Draft data model for the Giving Tuesday network projects.  Initial draft has been focussed on a leader-facing tool, and therefore does not include confidential fields that Giving Tuesday may also track internally.  It&rsquo;s possible that any transition to a graphing DB for analysis will involve some changes to the way we model individual entities as well. 
 </p>
 
-<section id="outline-container-orge452c8f" class="outline-2">
-<h2 id="orge452c8f">Introduction</h2>
-<div class="outline-text-2" id="text-orge452c8f">
+<p>
+There is some overlap with <a href="https://docs.google.com/spreadsheets/d/1pa0WLnPZfVH05HxnugvW1vCh-QzP67uT2C2UQf8vay0/edit#gid=239871098">the Giving Tuesday syntax document</a>, which generally takes precedence in cases of disagreement.  
+</p>
+
+
+<section id="outline-container-org7453a0d" class="outline-2">
+<h2 id="org7453a0d">Introduction</h2>
+<div class="outline-text-2" id="text-org7453a0d">
 <p>
 This document describes the data model for outward-facing representations of the Giving Tuesday network.
 </p>
 
 <p>
-The immediate spur for the creation of the model is a proposed tool (known internally as &ldquo;the wiki&rdquo;)  primarily intended for the use of <a href="#orgbc6d256">Giving Tuesday Campaign Leaders</a>, but it also serves as a data store for internal use by GT staff.  
+The immediate spur for the creation of the model is a proposed tool (known internally as &ldquo;the wiki&rdquo;)  primarily intended for the use of <a href="#orgfaf874e">Giving Tuesday Campaign Leaders</a>, but it also serves as a data store for internal use by GT staff.  
 </p>
 
 <p>
@@ -52,11 +57,11 @@ A reminder: the model does not completely describe the representation of entitie
 </div>
 </section>
 
-<section id="outline-container-org8d52362" class="outline-2">
-<h2 id="org8d52362">Movements</h2>
-<div class="outline-text-2" id="text-org8d52362">
+<section id="outline-container-org0e51e4c" class="outline-2">
+<h2 id="org0e51e4c">Movements</h2>
+<div class="outline-text-2" id="text-org0e51e4c">
 <p>
-A &ldquo;Movement&rdquo; is our top-level category for Ggiving Tuesday activist groups.  A Movement is usually located in a specific place &#x2013; a country, a province or state, or even a city &#x2013; and persists over time, from year to year. Movements run <a href="#org4b4d6c3">Campaigns</a>, and usually have <a href="#orgbc6d256">Leaders</a> associated with them.  Often they are sponsored by <a href="#org741bca5">Organizations</a>, but not always.  
+A &ldquo;Movement&rdquo; is our top-level category for Ggiving Tuesday activist groups.  A Movement is usually located in a specific place &#x2013; a country, a province or state, or even a city &#x2013; and persists over time, from year to year. Movements run <a href="#org914cb31">Campaigns</a>, and usually have <a href="#orgfaf874e">Leaders</a> associated with them.  Often they are sponsored by <a href="#orgb45b83e">Organizations</a>, but not always.  
 </p>
 
 <p>
@@ -192,7 +197,7 @@ Giving Tuesday collects many types of data about Movements, but most are not vis
 </table>
 
 <p>
-We also <b>link to</b> information about the lead <a href="#org741bca5">Organization</a>, known <a href="#org2bad8a2">Activities</a>, and current <a href="#orgbc6d256">Leaders</a> associated wit this movement.
+We also <b>link to</b> information about the lead <a href="#orgb45b83e">Organization</a>, known <a href="#orgbd90828">Activities</a>, and current <a href="#orgfaf874e">Leaders</a> associated wit this movement.
 </p>
 
 <p>
@@ -201,11 +206,11 @@ Movements may also include attachments, such as PDF&rsquo;s or Word documents. T
 </div>
 </section>
 
-<section id="outline-container-org4b4d6c3" class="outline-2">
-<h2 id="org4b4d6c3">Campaigns</h2>
-<div class="outline-text-2" id="text-org4b4d6c3">
+<section id="outline-container-org914cb31" class="outline-2">
+<h2 id="org914cb31">Campaigns</h2>
+<div class="outline-text-2" id="text-org914cb31">
 <p>
-While the word &ldquo;campaign&rdquo; has a number of meanings throughout GT, in the Wiki we use this word to mean an organized, sustained drive, usually taking place over a period of weeks or months, always associated with a <a href="#org8d52362">Movement</a>, and generally consisting of a number of <a href="#org2bad8a2">Activities</a>. In the Wiki, we track the following information about Campaigns:
+While the word &ldquo;campaign&rdquo; has a number of meanings throughout GT, we use this word to mean an organized, sustained drive, usually taking place over a period of weeks or months, always associated with a <a href="#org0e51e4c">Movement</a>, and generally consisting of a number of <a href="#orgbd90828">Activities</a>. The official syntax uses similar wording: &ldquo;Coordinated efforts that leverage the GivingTuesday brand to boost generosity&rdquo;. We track the following information about Campaigns:
 </p>
 
 <table>
@@ -282,7 +287,7 @@ While the word &ldquo;campaign&rdquo; has a number of meanings throughout GT, in
 <td class="org-left">Hashtag</td>
 <td class="org-left">String</td>
 <td class="org-left">N</td>
-<td class="org-left">Hashtag for the specific campaign (especially if distinct from the hashtag of the campaign&rsquo;s <a href="#org8d52362">Movement</a>)</td>
+<td class="org-left">Hashtag for the specific campaign (especially if distinct from the hashtag of the campaign&rsquo;s <a href="#org0e51e4c">Movement</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -292,11 +297,11 @@ Note that most details are already provided by the associated Movement.
 </p>
 </div>
 </section>
-<section id="outline-container-org2bad8a2" class="outline-2">
-<h2 id="org2bad8a2">Activities</h2>
-<div class="outline-text-2" id="text-org2bad8a2">
+<section id="outline-container-orgbd90828" class="outline-2">
+<h2 id="orgbd90828">Activities</h2>
+<div class="outline-text-2" id="text-orgbd90828">
 <p>
-In the Wiki, an Activity is a well-definied, time-limited action undertaken by a <a href="#org4b4d6c3">Campaign</a>. Very focussed Campaigns will often only have one Activity, but large Campaigns may have many.  For Activities, we track the folowing information:
+An Activity is a well-definied, time-limited action undertaken by a <a href="#org914cb31">Campaign</a>. Very focussed Campaigns will often only have one Activity, but large Campaigns may have many.  For Activities, we track the folowing information:
 </p>
 
 <table>
@@ -366,7 +371,7 @@ In the Wiki, an Activity is a well-definied, time-limited action undertaken by a
 <td class="org-left">Hashtag</td>
 <td class="org-left">String</td>
 <td class="org-left">N</td>
-<td class="org-left">Hashtag for the specific activity (especially if distinct from the hashtag of the activity&rsquo;s <a href="#org4b4d6c3">Campaign</a> or <a href="#org8d52362">Movement</a></td>
+<td class="org-left">Hashtag for the specific activity (especially if distinct from the hashtag of the activity&rsquo;s <a href="#org914cb31">Campaign</a> or <a href="#org0e51e4c">Movement</a></td>
 </tr>
 
 <tr>
@@ -404,11 +409,11 @@ Some chance that this structure will lead to annoying data entry for one-off cam
 </p>
 </div>
 </section>
-<section id="outline-container-org741bca5" class="outline-2">
-<h2 id="org741bca5"><span class="todo ACTION">ACTION</span> Organizations</h2>
-<div class="outline-text-2" id="text-org741bca5">
+<section id="outline-container-orgb45b83e" class="outline-2">
+<h2 id="orgb45b83e"><span class="todo ACTION">ACTION</span> Organizations</h2>
+<div class="outline-text-2" id="text-orgb45b83e">
 <p>
-In the Wiki, an Organization is a formal or informal entity that helps to organize one or more <a href="#org8d52362">Movements</a>,  <a href="#org4b4d6c3">Campaigns</a>, or <a href="#org2bad8a2">Activities</a>. Some Organizations have only brief or fleeting contact with Giving Tuesday, while others have a deep ongoing relationship. 
+An Organization is a formal or informal entity that helps to organize one or more <a href="#org0e51e4c">Movements</a>,  <a href="#org914cb31">Campaigns</a>, or <a href="#orgbd90828">Activities</a>. Some Organizations have only brief or fleeting contact with Giving Tuesday, while others have a deep ongoing relationship. 
 </p>
 
 <p>
@@ -482,9 +487,9 @@ Question: Exactly what information about Organizations should the <b>wiki</b> di
 </div>
 </section>
 
-<section id="outline-container-orgbc6d256" class="outline-2">
-<h2 id="orgbc6d256">Leaders</h2>
-<div class="outline-text-2" id="text-orgbc6d256">
+<section id="outline-container-orgfaf874e" class="outline-2">
+<h2 id="orgfaf874e">Leaders</h2>
+<div class="outline-text-2" id="text-orgfaf874e">
 <p>
 Leaders are the heart of the GT network.  Leaders are individuals who have taken responsibility for a particular Movement, Campaign, or Activity. GT works with many leaders, and we Have a  somewhat elaborate classifications system for them.  
 </p>
@@ -533,10 +538,10 @@ For Leaders we track the following information:
 </tr>
 
 <tr>
-<td class="org-left">Leader Type</td>
+<td class="org-left">Leadership Group</td>
 <td class="org-left">Taxonomy</td>
 <td class="org-left">?</td>
-<td class="org-left">Global, Community, Spark, other?</td>
+<td class="org-left">Global/Country, Community, Spark, other?</td>
 </tr>
 
 <tr>
@@ -611,17 +616,17 @@ Note: We track other demographic data about leaders in a private DB, and GT staf
 </div>
 </section>
 
-<section id="outline-container-org839b67d" class="outline-2">
-<h2 id="org839b67d">Taxonomies</h2>
-<div class="outline-text-2" id="text-org839b67d">
+<section id="outline-container-org21ffc25" class="outline-2">
+<h2 id="org21ffc25">Taxonomies</h2>
+<div class="outline-text-2" id="text-org21ffc25">
 <p>
 We use several taxonomies to understand our network. These may shift as we come to understand the network better.  Each is listed below in a subheading. At present, <b>none</b> of these has an adequate list of terms. 
 </p>
 </div>
 
-<div id="outline-container-org5dade7f" class="outline-3">
-<h3 id="org5dade7f">Activity Types</h3>
-<div class="outline-text-3" id="text-org5dade7f">
+<div id="outline-container-orgad28176" class="outline-3">
+<h3 id="orgad28176">Activity Types</h3>
+<div class="outline-text-3" id="text-orgad28176">
 <p>
 This taxonomy applies only to Activities.  We hope that it inspires leaders to create innovative and creative iterations on known activity types. 
 </p>
@@ -659,18 +664,18 @@ This taxonomy applies only to Activities.  We hope that it inspires leaders to c
 </div>
 </div>
 
-<div id="outline-container-org2dfece5" class="outline-3">
-<h3 id="org2dfece5">Organization Types</h3>
-<div class="outline-text-3" id="text-org2dfece5">
+<div id="outline-container-org3600b86" class="outline-3">
+<h3 id="org3600b86">Organization Types</h3>
+<div class="outline-text-3" id="text-org3600b86">
 <p>
 Historically, GT has classified organizations in various ways. These existing classifications need to be disentangled and normalized. 
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga5ee628" class="outline-3">
-<h3 id="orga5ee628">Leader Type</h3>
-<div class="outline-text-3" id="text-orga5ee628">
+<div id="outline-container-orgf7cac60" class="outline-3">
+<h3 id="orgf7cac60">Leader Type</h3>
+<div class="outline-text-3" id="text-orgf7cac60">
 <p>
 Would be good to find a better word than &ldquo;type&rdquo;. The level of activity at which the leader has been engaged. Ideally, this will map on to our existing taxonomies.
 </p>
@@ -719,22 +724,22 @@ Would be good to find a better word than &ldquo;type&rdquo;. The level of activi
 </div>
 </div>
 
-<div id="outline-container-org589cf65" class="outline-3">
-<h3 id="org589cf65">Leader Interests</h3>
-<div class="outline-text-3" id="text-org589cf65">
+<div id="outline-container-org069d4ac" class="outline-3">
+<h3 id="org069d4ac">Leader Interests</h3>
+<div class="outline-text-3" id="text-org069d4ac">
 <p>
-This needs some work. A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#org3fa5823">Movement Focus</a>.
+A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#org37ac07f">Movement Focus</a>.
 </p>
 
 <p>
-At present, the taxonomy terms have not been defined.  
+The following terms are defined in the official syntax document: Arts, Culture, Humanities, Children and Youth, Community Building, Disability Rights, Education, Gender rights, Environment and climate, Healthcare, Human and Civil Rights, Human Services, Hunger, LGBTQ+ Rights, Nonprofit, Operation, Poverty, Research and, Public Policy, Sports/Fitness, Workplace Giving, BIPOC Focus, Other
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd80a2cc" class="outline-3">
-<h3 id="orgd80a2cc">Movement Scale</h3>
-<div class="outline-text-3" id="text-orgd80a2cc">
+<div id="outline-container-org0861c7f" class="outline-3">
+<h3 id="org0861c7f">Movement Scale</h3>
+<div class="outline-text-3" id="text-org0861c7f">
 <p>
 A simple schema to quickly identify the geographical scale on which the movement operates.
 </p>
@@ -782,11 +787,11 @@ A simple schema to quickly identify the geographical scale on which the movement
 </div>
 </div>
 
-<div id="outline-container-org3fa5823" class="outline-3">
-<h3 id="org3fa5823">Movement Focus</h3>
-<div class="outline-text-3" id="text-org3fa5823">
+<div id="outline-container-org37ac07f" class="outline-3">
+<h3 id="org37ac07f">Movement Focus</h3>
+<div class="outline-text-3" id="text-org37ac07f">
 <p>
-This needs some work. A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#org589cf65">Leader Interests</a>.
+This needs some work. A taxonomy of thematic areas around which movements can be organized.  Should perhaps be shared with <a href="#org069d4ac">Leader Interests</a>.
 </p>
 
 <p>
@@ -797,7 +802,7 @@ At present, the taxonomy terms have not been defined.
 </section>
 </article>
 <section id="postamble" class="status">
-<p class="date">Created: 2022-09-30 Fri 13:15</p>
+<p class="date">Created: 2022-09-30 Fri 13:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </section>
 <script>window.klipse_settings = {selector_eval_html: '.src-html',
